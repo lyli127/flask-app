@@ -1,8 +1,9 @@
-from flask import Flask
+from flask import Flask, render_template, request, redirect, session
 import os
 import psycopg2
 
 app = Flask(__name__)
+
 
 @app.route('/')
 def index():
@@ -12,7 +13,14 @@ def index():
     cursor.execute("SELECT * FROM mytable;")
     results = cursor.fetchall()
     connection.close()
-    return f"{results[0]}"
+    # return f"{results[0]}"
+    return render_template("base.html")
+
+
+@app.route('/login')
+def login():
+    return render_template("login.html")
+
 
 if __name__ == '__main__':
     app.run(debug=True, port=os.getenv("PORT", default=5000))

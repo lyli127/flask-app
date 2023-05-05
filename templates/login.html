@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %} Login {% endblock  %}
+
+{% block head %}
+{{ super() }}
+{% endblock  %}
+
+{% block content %}
+<form method="GET" action="/">
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+    <label for="password">Password:</label>
+    <input type="password" minlength="8" maxlength="24" placeholder="Enter your password"
+        autocomplete="current-password" size=30 required>
+    <input type="submit" value="Submit" />
+</form>
+{% endblock  %}
