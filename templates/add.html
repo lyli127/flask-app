@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %} Add Item {% endblock  %}
+
+{% block head %}
+{{ super() }}
+{% endblock  %}
+
+{% block content %}
+<h1>Add To-Do Item</h1>
+<form method="POST" action="/api/item/add">
+    <label for="to-do-item">To do:</label>
+    <input type="text" placeholder="" size=50 required>
+    <input type="submit" value="Add Item" />
+</form>
+{% endblock  %}
