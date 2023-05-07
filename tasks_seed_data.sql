@@ -1,17 +1,29 @@
-DROP TABLE IF EXISTS mytable;
-CREATE TABLE mytable(
+DROP TABLE IF EXISTS tasks;
+CREATE TABLE tasks(
     id SERIAL PRIMARY KEY,
-    task TEXT NOT NULL,
+    user_id INTEGER,
+    item TEXT NOT NULL,
     is_done BOOLEAN NOT NULL,
-    email TEXT NOT NULL
+    CONSTRAINT foreign_key_user FOREIGN KEY(user_id) REFERENCES users(id)
 );
-INSERT INTO mytable(task, is_done, email)
-VALUES('groceries', FALSE, 'test@example.com');
-INSERT INTO mytable(task, is_done, email)
-VALUES('laundry', TRUE, 'test2@example.com');
-INSERT INTO mytable(task, is_done, email)
-VALUES('walk the dog', FALSE, 'test@example.com');
-INSERT INTO mytable(task, is_done, email)
-VALUES('buy gifts', FALSE, 'test3@example.com');
+INSERT INTO tasks(user_id, item, is_done)
+VALUES(1, 'groceries', FALSE);
+INSERT INTO tasks(user_id, item, is_done)
+VALUES(2, 'laundry', TRUE);
+INSERT INTO tasks(user_id, item, is_done)
+VALUES(3, 'walk the dog', FALSE);
+INSERT INTO tasks(user_id, item, is_done)
+VALUES(4, 'buy gifts', FALSE);
+INSERT INTO tasks(user_id, item, is_done)
+VALUES(4, 'buy coffee', FALSE);
+-- Print Task Table
 SELECT *
-FROM mytable;
+FROM tasks;
+-- Print both tables
+SELECT user_id,
+    item,
+    is_done,
+    users.name,
+    email
+FROM tasks
+    LEFT JOIN users ON user_id = users.id;
