@@ -30,3 +30,14 @@ def add_task_item(user_id, item, is_done):
     """Function Works!"""
     sql_write_tasks("INSERT INTO tasks(user_id, item, is_done) VALUES (%s, %s, %s);",
                     [user_id, item, is_done])
+
+
+def task_convert_to_dictionary(task):
+    """Function Works!"""
+    return {"id": str(task[0]), "user_id": str(task[1]), "item": task[2], "is_done": task[3]}
+
+
+def get_task_item(id):
+    """Function Works!"""
+    item = sql_read_tasks("SELECT * FROM tasks WHERE id=%s;", [id])[0]
+    return task_convert_to_dictionary(item)
