@@ -3,3 +3,16 @@ import os
 from dotenv import load_dotenv
 
 load_dotenv()
+
+
+def sql_read_tasks(query, parameters=[]):
+
+    # connection
+    connection = psycopg2.connect(os.getenv("DATABASE_URL"))
+    cursor = connection.cursor()
+    cursor.execute(query, parameters)
+    results = cursor.fetchall()
+    connection.close()
+    return results
+
+
