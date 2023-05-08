@@ -6,7 +6,8 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-def sql_read_users(query, parameters):
+def sql_read_users(query, parameters=[]):
+    """Function works"""
     # connection
     connection = psycopg2.connect(os.getenv("DATABASE_URL"))
     cursor = connection.cursor()
@@ -17,6 +18,7 @@ def sql_read_users(query, parameters):
 
 
 def sql_write_users(query, parameters=[]):
+    """Function works"""
     # connection
     connection = psycopg2.connect(os.getenv("DATABASE_URL"))
     cursor = connection.cursor()
@@ -26,18 +28,23 @@ def sql_write_users(query, parameters=[]):
 
 
 def add_user(name, email, pw):
-    pw.encode()
-    hashed_pw = bcrypt.hashpw(pw.encode(), bcrypt.gensalt())
+    """Function works"""
+    hashed_pw = bcrypt.hashpw(pw.encode(), bcrypt.gensalt()).decode()
     sql_write_users("INSERT INTO users(name, email, password_hash) VALUES (%s, %s, %s);",
                     [name, email, hashed_pw])
 
 
-def convert_to_dictionary(user):
-    return {"id": str(user[0]), "name": user[1], "email": user[2]}
+def user_convert_to_dictionary(user):
+    """Function works"""
+    return {"id": str(user[0]), "name": user[1], "email": user[2], "password_hash": user[3]}
 
 
 def get_user(id):
+    """Function works"""
     user = sql_read_users("SELECT * FROM users WHERE id=%s;", [id])[0]
+    return user_convert_to_dictionary(user)
+
+
 def update_user(id, name, email):
     """Function works"""
     sql_write_users("UPDATE users SET name=%s, email=%s WHERE id=%s",
@@ -52,6 +59,7 @@ def update_user_password(id, pw):
 
 
 def delete_user_account(id):
+    """Function works"""
     sql_write_users("DELETE FROM users WHERE id=%s;", [id])
 
 
