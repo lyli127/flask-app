@@ -28,5 +28,21 @@ def login():
     return render_template("login.html")
 
 
+@app.route('/login', methods=['POST'])
+def login_validation():
+    # Get form data
+    email = request.form.get('email')
+    plain_text_password = request.form.get('password')
+    # Call validate_password function
+    valid_user = users.get_user_if_valid(email, plain_text_password)
+    if valid_user:
+        # set session and redirect
+        session['user_id'] = valid_user['id']
+        print(valid_user)
+        return redirect("/")
+    else:
+        # password was invalid, redirect to login page
+        print("No valid user", valid_user)
+        return redirect("/login")
 if __name__ == '__main__':
     app.run(debug=True, port=os.getenv("PORT", default=5000))
