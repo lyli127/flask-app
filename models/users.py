@@ -48,3 +48,21 @@ def update_user(id, name, email, password):
 
 def delete_user_account(id):
     sql_write_users("DELETE FROM users WHERE id=%s;", [id])
+
+
+def get_user_if_valid(email, password):
+    # get user from database via email
+    result = sql_read_users("SELECT * FROM users WHERE email=%s;", [email])
+    # if user exists check password
+    if len(result) == 0:
+        # No users with this email address found in database
+        return None
+    else:
+        # User found in database > Check Password:
+        user = user_convert_to_dictionary(result[0])
+        is_valid = bcrypt.checkpw(
+            password.encode(), user["password_hash"].encode())
+        if is_valid:
+            return user
+        else:
+            return None
