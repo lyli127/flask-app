@@ -44,5 +44,11 @@ def login_validation():
         # password was invalid, redirect to login page
         print("No valid user", valid_user)
         return redirect("/login")
+@app.route("/logout")
+def logout():
+    # cookie still exists, but the value of session is set to null
+    session["user_id"] = None
+    # session.clear() #removes the cookie entirely
+    return redirect("/")
 if __name__ == '__main__':
     app.run(debug=True, port=os.getenv("PORT", default=5000))
