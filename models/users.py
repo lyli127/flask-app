@@ -38,7 +38,10 @@ def convert_to_dictionary(user):
 
 def get_user(id):
     user = sql_read_users("SELECT * FROM users WHERE id=%s;", [id])[0]
-    return convert_to_dictionary(user)
+def update_user(id, name, email):
+    """Function works"""
+    sql_write_users("UPDATE users SET name=%s, email=%s WHERE id=%s",
+                    [name, email, id])
 
 
 def update_user(id, name, email, password):
