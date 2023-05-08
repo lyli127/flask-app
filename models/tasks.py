@@ -50,3 +50,7 @@ def get_all_tasks_items(user_id):
     return [task_convert_to_dictionary(item) for item in items]
 
 
+def update_task_item(id, item, is_done):
+    """Function Works!"""
+    sql_write_tasks(
+        "UPDATE tasks SET item=%s, is_done=%s WHERE id=%s", [item, is_done, id])
