@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request, redirect, session
 import os
 import psycopg2
-import requests
 from models import tasks, users
 from dotenv import load_dotenv
 
