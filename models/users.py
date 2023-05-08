@@ -44,9 +44,11 @@ def update_user(id, name, email):
                     [name, email, id])
 
 
-def update_user(id, name, email, password):
-    sql_write_users("UPDATE users SET name=%s, email=%s, password=%s WHERE id=%s",
-                    [name, email, password, id])
+def update_user_password(id, pw):
+    """Function works"""
+    hashed_pw = bcrypt.hashpw(pw.encode(), bcrypt.gensalt()).decode()
+    sql_write_users("UPDATE users SET password_hash=%s WHERE id=%s",
+                    [hashed_pw, id])
 
 
 def delete_user_account(id):
