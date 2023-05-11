@@ -5,6 +5,9 @@
 ul {
   list-style: " 〰️ ";
 }
+.ul-tasks > li {
+  line-height: 3rem;
+}
 a {
   text-decoration: none;
 }
