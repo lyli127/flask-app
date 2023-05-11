@@ -7,3 +7,30 @@
 {% endblock  %}
 
 {% block content %}
+<div class="main container text-center">
+    <h1>Signup to Taskly</h1>
+    <img src="static/images/signup-img.png" alt="signup image" class="signup-img figure-img img-fluid rounded">
+    <p>Already have an account? <a href="/login">Login here</a></p>
+    <form method="POST" action="/api/signup">
+        <label for="name">
+            <h3>Name:</h3>
+        </label><br>
+        <input type="name" id="name" name="name" placeholder="Enter your name" size=25 required>
+        <br>
+        <label for="email">
+            <h3>Email:</h3>
+        </label><br>
+        <input type="email" id="email" name="email" placeholder="Enter your email" size=25 required>
+        <br>
+        <label for="password">
+            <h3>Password:</h3>
+        </label><br>
+        <input type="password" name="password" minlength="8" maxlength="24" placeholder="Create your password"
+            autocomplete="current-password" size=25 required>
+        <br>
+        <input type="submit" value="Sign Up" />
+        <br>
+        <br>
+    </form>
+</div>
+{% endblock  %}
