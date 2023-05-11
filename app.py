@@ -116,5 +116,17 @@ def edit_task_form(id):
     else:
         return render_template("edit.html", item=tasks.get_task_item(id))
 
+
+@app.route('/api/task/edit/<id>', methods=["POST"])
+def edit_task(id):
+    form = request.form
+    is_authed = session.get('user_id')
+    if not is_authed:
+        # user is logged out
+        return redirect('/login')
+    else:
+        tasks.update_task_item(id, form.get('item'), False)
+        return redirect('/tasks/all')
+
 if __name__ == '__main__':
     app.run(debug=True, port=os.getenv("PORT", default=5000))
