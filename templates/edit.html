@@ -15,6 +15,8 @@
     </div>
 
 </nav>
+
+<form method="POST" action="/api/task/edit/{{ item['id'] }}">
     <label for="item">To-Do Item:</label>
     <input id="item" name="item" value="{{ item['item'] }}" required />
     <input type="submit">
