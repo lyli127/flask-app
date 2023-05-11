@@ -7,6 +7,14 @@
 {% endblock  %}
 
 {% block content %}
+<nav class="navbar navbar-dark bg-dark">
+    <!-- Navbar content -->
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">MyBrandHere</a>
+    </div>
+
+</nav>
+
 <h1>Add To-Do Item</h1>
 <form method="POST" action="/api/item/add">
     <label for="to-do-item">To do:</label>
