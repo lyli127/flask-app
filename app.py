@@ -91,5 +91,19 @@ def add_task_form():
     return render_template("add.html")
 
 
+@app.route('/api/task/add', methods=["POST"])
+def add_task_item():
+    is_authed = session.get('user_id')
+    if not is_authed:
+        # user is logged out
+        return redirect('/login')
+    else:
+        form = request.form
+        item = form.get("task_item")
+        is_done = False
+        user_id = users.get_user(session['user_id'])['id']
+        tasks.add_task_item(user_id, item, is_done)
+        return redirect('/tasks/all')
+
 if __name__ == '__main__':
     app.run(debug=True, port=os.getenv("PORT", default=5000))
