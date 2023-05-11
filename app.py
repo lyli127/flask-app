@@ -23,6 +23,27 @@ def index():
 @app.route('/signup')
 def signup_form():
     return render_template("signup.html")
+
+
+@app.route('/api/signup', methods=['POST'])
+def signup():
+    # Get form data
+    name = request.form.get('name')
+    email = request.form.get('email')
+    plain_text_password = request.form.get('password')
+    # create user
+    users.add_user(name, email, plain_text_password)
+    # Call validate_password function
+    valid_user = users.get_user_if_valid(email, plain_text_password)
+    if valid_user:
+        # set session and redirect
+        session['user_id'] = valid_user['id']
+        print(valid_user)
+        return redirect("/task/add")
+    else:
+        # password was invalid, redirect to login page
+        return redirect("/login")
+
     return render_template("login.html")
 
 
