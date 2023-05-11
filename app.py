@@ -72,5 +72,18 @@ def logout():
     session["user_id"] = None
     # session.clear() #removes the cookie entirely
     return redirect("/")
+
+
+# View Tasks
+@app.route('/tasks/all')
+def view_all_tasks():
+    is_authed = session.get('user_id')
+    if not is_authed:
+        # user is logged out
+        return redirect('/login')
+    else:
+        return render_template("view_all_tasks.html", items=tasks.get_all_tasks_items(session['user_id']))
+
+
 if __name__ == '__main__':
     app.run(debug=True, port=os.getenv("PORT", default=5000))
