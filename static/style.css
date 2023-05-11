@@ -44,3 +44,7 @@ main {
   max-height: 20rem;
   width: auto;
 }
+
+.item-icon {
+  font-size: 0.6rem;
+}
