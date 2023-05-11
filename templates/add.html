@@ -16,9 +16,9 @@
 </nav>
 
 <h1>Add To-Do Item</h1>
-<form method="POST" action="/api/item/add">
-    <label for="to-do-item">To do:</label>
-    <input type="text" placeholder="" size=50 required>
+<form method="POST" action="/api/task/add">
+    <label for="task_item">To do:</label>
+    <input name="task_item" id="task_item" type="text" placeholder="" size=50 required>
     <input type="submit" value="Add Item" />
 </form>
 {% endblock  %}
