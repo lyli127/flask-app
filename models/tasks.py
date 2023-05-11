@@ -59,3 +59,7 @@ def update_task_item(id, item, is_done):
 def delete_task_item(id):
     """Function Works!"""
     sql_write_tasks("DELETE FROM tasks WHERE id=%s;", [id])
+
+
+def delete_all_task_items(user_id):
+    sql_write_tasks("DELETE FROM tasks WHERE user_id=%s", [user_id])
