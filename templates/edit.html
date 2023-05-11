@@ -7,6 +7,7 @@
 {% endblock %}
 
 {% block content %}
+{# NAV BAR #}
 <nav class="navbar navbar-dark bg-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="/">Tarefas</a>
@@ -34,11 +35,13 @@
 </nav>
 <br>
 <br>
-
-<form method="POST" action="/api/task/edit/{{ item['id'] }}">
-    <label for="item">To-Do Item:</label>
-    <input id="item" name="item" value="{{ item['item'] }}" required />
-    <input type="submit">
-</form>
+{# MAIN CONTENT #}
+<div class="main container container-fluid">
+    <form method="POST" action="/api/task/edit/{{ item['id'] }}">
+        <label for="item">To-Do Item:</label>
+        <input id="item" name="item" value="{{ item['item'] }}" required />
+        <input type="submit">
+    </form>
+</div>
 
 {% endblock %}
