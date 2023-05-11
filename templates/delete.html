@@ -11,8 +11,8 @@
 <p>Are you sure you want to delete {{ item["item"] }}?</p>
 <form>
     <input hidden name="id" value="{{ item['id'] }}">
-    <input type="submit" value="Yes" formmethod="POST" formaction="/api/item/delete">
-    <input type="submit" value="No" formaction="/">
+    <input type="submit" value="Yes" formmethod="POST" formaction="/api/task/delete/{{ item['id'] }}">
+    <input type="submit" value="No" formaction="/tasks/all">
 </form>
 
 {% endblock %}
