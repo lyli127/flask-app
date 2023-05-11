@@ -85,5 +85,11 @@ def view_all_tasks():
         return render_template("view_all_tasks.html", items=tasks.get_all_tasks_items(session['user_id']))
 
 
+# Create Task
+@app.route('/task/add')
+def add_task_form():
+    return render_template("add.html")
+
+
 if __name__ == '__main__':
     app.run(debug=True, port=os.getenv("PORT", default=5000))
