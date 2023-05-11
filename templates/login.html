@@ -7,9 +7,10 @@
 {% endblock  %}
 
 {% block content %}
-<div class="login-main container text-center">
+<div class="main container text-center">
     <h1>Welcome to Taskly</h1>
     <img src="static/images/login-img.png" alt="login image" class="login-img figure-img img-fluid rounded">
+    <p>Don't have an account? <a href="/signup">Signup here</a></p>
     <form method="POST" action="/login">
         <label for="email">
             <h3>Email:</h3>
