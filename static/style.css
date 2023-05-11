@@ -39,7 +39,8 @@ input[type="submit"]:hover {
 login-main {
   padding-top: 5rem;
 }
-.login-img {
+.login-img,
+.signup-img {
   max-height: 20rem;
   width: auto;
 }
