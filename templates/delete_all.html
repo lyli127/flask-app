@@ -12,3 +12,14 @@
     <div class="container-fluid">
         <a class="navbar-brand" href="#">MyBrandHere</a>
     </div>
+
+</nav>
+<div class="main">
+    <p>Are you sure you want to delete all list items?</p>
+    <form>
+        <input hidden name="user_id" value="{{ item['user_id'] }}">
+        <input type="submit" value="Yes" formmethod="POST" formaction="/api/tasks/delete/all">
+        <input type="submit" value="No" formaction="/tasks/all">
+    </form>
+</div>
+{% endblock %}
