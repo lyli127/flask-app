@@ -7,6 +7,7 @@
 {% endblock %}
 
 {% block content %}
+{# NAV BAR #}
 <nav class="navbar navbar-dark bg-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="/">Tarefas</a>
@@ -34,7 +35,8 @@
 </nav>
 <br>
 <br>
-<div class="main">
+{# MAIN CONTENT #}
+<div class="main container  container-fluid">
     <p>Are you sure you want to delete all list items?</p>
     <form>
         <input hidden name="user_id" value="{{ item['user_id'] }}">
