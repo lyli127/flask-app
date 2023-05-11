@@ -20,8 +20,9 @@ def index():
         return redirect('/tasks/all')
 
 
-@app.route('/login')
-def login():
+@app.route('/signup')
+def signup_form():
+    return render_template("signup.html")
     return render_template("login.html")
 
 
