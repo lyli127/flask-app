@@ -7,6 +7,7 @@
 {% endblock  %}
 
 {% block content %}
+{# NAV BAR #}
 <nav class="navbar navbar-dark bg-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="/">Tarefas</a>
@@ -20,9 +21,6 @@
                     <a class="nav-link active" aria-current="page" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/tasks/all">View All Tasks</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="/task/add">Add Task</a>
                 </li>
                 <li class="nav-item">
@@ -34,9 +32,10 @@
 </nav>
 <br>
 <br>
-<div class="main">
+{# MAIN CONTENT #}
+<div class="main container container-fluid">
     {# <h3>Tasks:</h3> #}
-    <ul>
+    <ul class="ul-tasks">
         {% for item in items %}
         {# TODO: Fix pencil emoji https://github.com/microsoft/vscode/issues/118905#issuecomment-802552899 #}
         <li>{{ item["item"] }}<span class="item-icon"><a href="/task/delete/{{item['id']}}" title="Delete item"> ❌</a> |
