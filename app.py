@@ -128,5 +128,14 @@ def edit_task(id):
         tasks.update_task_item(id, form.get('item'), False)
         return redirect('/tasks/all')
 
+
+@app.route('/task/delete/<id>')
+def delete_task_form(id):
+    is_authed = session.get('user_id')
+    if not is_authed:
+        # user is logged out
+        return redirect('/login')
+    else:
+        return render_template("delete.html", item=tasks.get_task_item(id))
 if __name__ == '__main__':
     app.run(debug=True, port=os.getenv("PORT", default=5000))
