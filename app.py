@@ -66,6 +66,8 @@ def login_validation():
         # password was invalid, redirect to login page
         print("No valid user", valid_user)
         return redirect("/login")
+
+
 @app.route("/logout")
 def logout():
     # cookie still exists, but the value of session is set to null
@@ -181,4 +183,4 @@ def delete_all_tasks(user_id):
 
 
 if __name__ == '__main__':
-    app.run(debug=True, port=os.getenv("PORT", default=5000))
+    app.run(debug=True, port=int(os.getenv("PORT", default=5000)))
