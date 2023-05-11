@@ -166,5 +166,19 @@ def delete_all_tasks_form():
         user_id = users.get_user(session['user_id'])['id']
         tasks.delete_all_task_items(user_id)
         return render_template("delete_all.html", item=tasks.get_all_tasks_items(user_id))
+
+
+@app.route('/api/tasks/delete/all', methods=["POST"])
+def delete_all_tasks(user_id):
+    is_authed = session.get('user_id')
+    if not is_authed:
+        # user is logged out
+        return redirect('/login')
+    else:
+        user_id = users.get_user(session['user_id'])['id']
+        tasks.delete_all_task_items(user_id)
+        return redirect('/tasks/all')
+
+
 if __name__ == '__main__':
     app.run(debug=True, port=os.getenv("PORT", default=5000))
