@@ -2,6 +2,9 @@
   font-family: "JetBrains Mono", monospace;
 }
 
+ul {
+  list-style: " 〰️ ";
+}
 label {
   padding-top: 2rem;
 }
