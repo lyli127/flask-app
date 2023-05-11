@@ -44,6 +44,9 @@ def signup():
         # password was invalid, redirect to login page
         return redirect("/login")
 
+
+@app.route('/login', methods=['GET'])
+def login_form():
     return render_template("login.html")
 
 
