@@ -151,12 +151,6 @@ def delete_task(id):
         tasks.delete_task_item(id)
         return redirect('/tasks/all')
 
-# Delete All Tasks
-
-# Break delete route into 2
-#   1. Delete form
-#   2. Delete API route
-
 
 @app.route('/tasks/delete/all')
 def delete_all_tasks_form():
@@ -166,7 +160,6 @@ def delete_all_tasks_form():
         return redirect('/login')
     else:
         user_id = users.get_user(session['user_id'])['id']
-        tasks.delete_all_task_items(user_id)
         return render_template("delete_all.html", item=tasks.get_all_tasks_items(user_id))
 
 
