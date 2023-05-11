@@ -14,3 +14,23 @@
     </div>
 
 </nav>
+<div class="main">
+    <h2>Tasks:</h2>
+    <ul>
+        {% for item in items %}
+        {# TODO: Fix pencil emoji https://github.com/microsoft/vscode/issues/118905#issuecomment-802552899 #}
+        <li>{{ item["item"] }}<span class="item-icon"><a href="/task/delete/{{item['id']}}" title="Delete item"> ❌</a> |
+                <a href="/task/edit/{{item['id']}}" title="Edit item"> 🖊️ </a></span>
+        </li>
+        {% if item["is_done"] %}
+        {# TODO: ADD LOGIC TO HIDE DONE TASKS #}
+        {% endif %}
+        {% endfor %}
+    </ul>
+    <a href='/task/add'> ➕ Add Task Item</a>
+    <br>
+    <br>
+    <a href='/tasks/delete/all'> ➖ Delete All Tasks</a>
+
+</div>
+{% endblock  %}
