@@ -137,5 +137,16 @@ def delete_task_form(id):
         return redirect('/login')
     else:
         return render_template("delete.html", item=tasks.get_task_item(id))
+
+
+@app.route('/api/task/delete/<id>', methods=["POST"])
+def delete_task(id):
+    is_authed = session.get('user_id')
+    if not is_authed:
+        # user is logged out
+        return redirect('/login')
+    else:
+        tasks.delete_task_item(id)
+        return redirect('/tasks/all')
 if __name__ == '__main__':
     app.run(debug=True, port=os.getenv("PORT", default=5000))
