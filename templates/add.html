@@ -14,11 +14,14 @@
     </div>
 
 </nav>
-
+<br>
 <h1>Add To-Do Item</h1>
 <form method="POST" action="/api/task/add">
-    <label for="task_item">To do:</label>
-    <input name="task_item" id="task_item" type="text" placeholder="" size=50 required>
+    <label for="task_item"></label>
+    <br>
+    <input name="task_item" id="task_item" type="text" placeholder="Task item here" contenteditable="true" size=30
+        required>
+    <br>
     <input type="submit" value="Add Item" />
 </form>
 {% endblock  %}
