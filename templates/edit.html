@@ -8,7 +8,13 @@
 
 {% block content %}
 
-<form method="POST" action="/api/item/edit/{{ item['id'] }}">
+<nav class="navbar navbar-dark bg-dark">
+    <!-- Navbar content -->
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">MyBrandHere</a>
+    </div>
+
+</nav>
     <label for="item">To-Do Item:</label>
     <input id="item" name="item" value="{{ item['item'] }}" required />
     <input type="submit">
