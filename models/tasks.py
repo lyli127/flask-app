@@ -46,7 +46,7 @@ def get_task_item(id):
 def get_all_tasks_items(user_id):
     """Function Works!"""
     items = sql_read_tasks(
-        "SELECT * FROM tasks WHERE user_id=%s;", [user_id])
+        "SELECT * FROM tasks WHERE user_id=%s ORDER BY item ASC;", [user_id])
     return [task_convert_to_dictionary(item) for item in items]
 
 
