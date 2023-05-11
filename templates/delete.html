@@ -7,6 +7,7 @@
 {% endblock %}
 
 {% block content %}
+{# NAV BAR #}
 <nav class="navbar navbar-dark bg-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="/">Tarefas</a>
@@ -34,12 +35,13 @@
 </nav>
 <br>
 <br>
-
-<p>Are you sure you want to delete {{ item["item"] }}?</p>
-<form>
-    <input hidden name="id" value="{{ item['id'] }}">
-    <input type="submit" value="Yes" formmethod="POST" formaction="/api/task/delete/{{ item['id'] }}">
-    <input type="submit" value="No" formaction="/tasks/all">
-</form>
-
+{# MAIN CONTENT #}
+<div class="main container container-fluid">
+    <p>Are you sure you want to delete {{ item["item"] }}?</p>
+    <form>
+        <input hidden name="id" value="{{ item['id'] }}">
+        <input type="submit" value="Yes" formmethod="POST" formaction="/api/task/delete/{{ item['id'] }}">
+        <input type="submit" value="No" formaction="/tasks/all">
+    </form>
+</div>
 {% endblock %}
