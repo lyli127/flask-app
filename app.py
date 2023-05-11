@@ -12,14 +12,12 @@ app.config['SECRET_KEY'] = os.getenv("SECRET_KEY")
 
 @app.route('/')
 def index():
-    # connection = psycopg2.connect(host=os.getenv("PGHOST"), user=os.getenv("PGUSER"), password=os.getenv("PGPASSWORD"), port=os.getenv("PGPORT"), dbname=os.getenv("PGDATABASE"))
-    connection = psycopg2.connect(os.getenv("DATABASE_URL"))
-    cursor = connection.cursor()
-    cursor.execute("SELECT * FROM mytable;")
-    results = cursor.fetchall()
-    connection.close()
-    # return f"{results[0]}"
-    return render_template("base.html")
+    is_authed = session.get('user_id')
+    if not is_authed:
+        # user is logged out
+        return redirect('/signup')
+    else:
+        return redirect('/tasks/all')
 
 
 @app.route('/login')
