@@ -34,7 +34,7 @@ Tarefas is a to-do list Flask app.
 ## Upcoming features
 
 - Delete account
-- Due date
+- Task due date
 - Mark task as done
 - Add labels/tags
 - Hide/show done tasks
