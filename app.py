@@ -153,7 +153,7 @@ def delete_task(id):
 
 
 @app.route('/tasks/delete/all')
-def delete_all_tasks_form(user_id):
+def delete_all_tasks_form():
     is_authed = session.get('user_id')
     if not is_authed:
         # user is logged out
@@ -164,7 +164,7 @@ def delete_all_tasks_form(user_id):
 
 
 @app.route('/api/tasks/delete/all', methods=["POST"])
-def delete_all_tasks(user_id):
+def delete_all_tasks():
     is_authed = session.get('user_id')
     if not is_authed:
         # user is logged out
