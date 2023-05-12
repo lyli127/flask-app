@@ -175,5 +175,16 @@ def delete_all_tasks(user_id):
         return redirect('/tasks/all')
 
 
+@app.route('/user/edit/<user_id>')
+def edit_user_form(user_id):
+    is_authed = session.get('user_id')
+    if not is_authed:
+        # user is logged out
+        return redirect('/login')
+    else:
+        user_id = users.get_user(session['user_id'])['id']
+        return render_template("user_profile.html", user=users.get_user(user_id))
+
+
 if __name__ == '__main__':
     app.run(debug=True, port=int(os.getenv("PORT", default=5000)))
