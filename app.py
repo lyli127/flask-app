@@ -186,5 +186,17 @@ def edit_user_form(user_id):
         return render_template("user_profile.html", user=users.get_user(user_id))
 
 
+@app.route('/api/user/edit/<user_id>', methods=["POST"])
+def edit_user(user_id):
+    form = request.form
+    is_authed = session.get('user_id')
+    if not is_authed:
+        # user is logged out
+        return redirect('/login')
+    else:
+        user_id = users.get_user(session['user_id'])['id']
+        users.update_user(user_id, form.get('name'), form.get('email'))
+        return redirect('/')
+
 if __name__ == '__main__':
     app.run(debug=True, port=int(os.getenv("PORT", default=5000)))
