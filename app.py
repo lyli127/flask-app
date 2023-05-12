@@ -84,7 +84,7 @@ def view_all_tasks():
         # user is logged out
         return redirect('/login')
     else:
-        return render_template("view_all_tasks.html", items=tasks.get_all_tasks_items(session['user_id']))
+        return render_template("view_all_tasks.html", items=tasks.get_all_tasks_items(session['user_id']), user=users.get_user(session['user_id']))
 
 
 # Create Task
@@ -208,6 +208,20 @@ def user_password_form(user_id):
     else:
         user_id = users.get_user(session['user_id'])['id']
         return render_template("update_password.html", user=users.get_user(user_id))
+
+
+@app.route('/api/user/password/<user_id>', methods=["POST"])
+def user_password(user_id):
+    form = request.form
+    is_authed = session.get('user_id')
+    if not is_authed:
+        # user is logged out
+        return redirect('/login')
+    else:
+        user_id = users.get_user(session['user_id'])['id']
+        users.update_user_password(user_id, form.get('password'))
+        return redirect('/')
+
 
 if __name__ == '__main__':
     app.run(debug=True, port=int(os.getenv("PORT", default=5000)))
