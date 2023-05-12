@@ -198,5 +198,16 @@ def edit_user(user_id):
         users.update_user(user_id, form.get('name'), form.get('email'))
         return redirect('/')
 
+
+@app.route('/user/password/<user_id>')
+def user_password_form(user_id):
+    is_authed = session.get('user_id')
+    if not is_authed:
+        # user is logged out
+        return redirect('/login')
+    else:
+        user_id = users.get_user(session['user_id'])['id']
+        return render_template("update_password.html", user=users.get_user(user_id))
+
 if __name__ == '__main__':
     app.run(debug=True, port=int(os.getenv("PORT", default=5000)))
