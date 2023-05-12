@@ -38,9 +38,11 @@
 {# MAIN CONTENT #}
 <div class="main container container-fluid">
     <form method="POST" action="/api/task/edit/{{ item['id'] }}">
-        <label for="item">To-Do Item:</label>
+        <label for="item">Edit Item:</label>
+        <br>
         <input id="item" name="item" value="{{ item['item'] }}" required />
-        <input type="submit">
+        <br>
+        <input type="submit" value="Edit Item" />
     </form>
 </div>
 
