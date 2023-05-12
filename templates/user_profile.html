@@ -38,3 +38,20 @@
 </nav>
 <br>
 <br>
+{# MAIN CONTENT #}
+<div class="main container container-fluid">
+    <h3>Update User Information:</h3>
+    <form method="POST" action="/api/user/edit/{{ user['id'] }}">
+        <label for="name">Name:</label>
+        <br>
+        <input id="name" name="name" value="{{ user['name'] }}" required />
+        <br>
+        <label for="email">Email:</label>
+        <br>
+        <input id="email" name="email" value="{{ user['email'] }}" required />
+        <br>
+        <input type="submit">
+    </form>
+</div>
+
+{% endblock %}
