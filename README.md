@@ -17,6 +17,7 @@ This is the second project out 4 of for General Assembly Software Engineering In
 - Bootstrap
 - Jinja
 - Python
+- Postgresql
 
 ## Overall Approach
 
